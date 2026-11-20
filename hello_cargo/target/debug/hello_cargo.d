@@ -1,0 +1,1 @@
+/home/sekigosan/videoweb/hello_cargo/target/debug/hello_cargo: /home/sekigosan/videoweb/hello_cargo/src/main.rs /home/sekigosan/videoweb/hello_cargo/src/web/editor.js /home/sekigosan/videoweb/hello_cargo/src/web/index.html

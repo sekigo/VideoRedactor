@@ -1,0 +1,4 @@
+    Checking hello_cargo v0.1.0 (/home/sekigosan/videoweb/hello_cargo)
+error: could not compile `hello_cargo` (bin "hello_cargo" test) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `hello_cargo` (bin "hello_cargo") due to 1 previous error

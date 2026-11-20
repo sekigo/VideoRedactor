@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Видеоредактор</title>
+    <script src="/editor.js" defer></script>
+    <style>
+        :root { color-scheme: dark; font: 1rem/1.5 system-ui, sans-serif; }
+        body { margin: 0; background: #14171e; color: #f0f2f7; }
+        main { max-width: 48rem; margin: 2rem auto; padding: 0 1rem; }
+        h1 { margin: 0 0 1rem; }
+        form { padding: 1.25rem; background: #212631; border-radius: 0.75rem; }
+        form + form { margin-top: 1rem; }
+        form h2 { margin: 0 0 0.75rem; font-size: 1.25rem; }
+        label { display: block; font-weight: 600; }
+        input[type=file] { display: block; max-width: 100%; margin: 0.5rem 0; }
+        video { display: block; width: 100%; max-height: 55vh; margin: 1rem 0; background: #0f1117; }
+        .range { margin: 0.75rem 0; }
+        input[type=range] { display: block; width: 100%; margin: 0.35rem 0; accent-color: #91b4ff; }
+        output { font-variant-numeric: tabular-nums; }
+        .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+        button { padding: 0.5rem 0.8rem; border: 1px solid #70798a; border-radius: 0.4rem; font: inherit; cursor: pointer; }
+        button[type=submit] { background: #91b4ff; border-color: #91b4ff; color: #111725; font-weight: 600; }
+        button:disabled { opacity: 0.5; cursor: default; }
+        #status:empty { display: none; }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Видеоредактор</h1>
+        <form action="/export" method="post" enctype="multipart/form-data">
+            <label for="video-file">Выбери видео MP4</label>
+            <input id="video-file" name="video" type="file" accept=".mp4,video/mp4" required>
+            <p id="status" role="status"></p>
+
+            <section id="trim-editor" aria-label="Обрезка видео" hidden>
+                <video id="preview" controls preload="metadata" playsinline></video>
+                <div class="range">
+                    <label for="start">Начало <output id="start-time" for="start"></output></label>
+                    <input id="start" name="start" type="range" min="0" max="0" step="any" value="0">
+                </div>
+                <div class="range">
+                    <label for="end">Конец <output id="end-time" for="end"></output></label>
+                    <input id="end" name="end" type="range" min="0" max="0" step="any" value="0">
+                </div>
+                <p>Длительность фрагмента <output id="clip-duration" for="start end"></output></p>
+                <div class="actions">
+                    <button id="play-clip" type="button" disabled>Смотреть фрагмент</button>
+                    <button id="export" type="submit" disabled>Выгрузить MP4</button>
+                </div>
+            </section>
+        </form>
+
+        <form id="concat-form" action="/concat" method="post" enctype="multipart/form-data">
+            <h2>Склейка видео</h2>
+            <label for="concat-first">Первое видео</label>
+            <input id="concat-first" name="first" type="file" accept=".mp4,video/mp4" required>
+            <label for="concat-second">Второе видео</label>
+            <input id="concat-second" name="second" type="file" accept=".mp4,video/mp4" required>
+            <div class="actions">
+                <button id="concat-submit" type="submit" disabled>Склеить MP4</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

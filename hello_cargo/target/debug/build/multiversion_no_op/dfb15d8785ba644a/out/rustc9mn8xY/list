@@ -1,0 +1,8 @@
+{
+  global:
+    __rustc_proc_macro_decls_6290f7052cce2cbd__;
+    rust_metadata_multiversion_no_op_6290f7052cce2cbd;
+
+  local:
+    *;
+};
