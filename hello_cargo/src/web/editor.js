@@ -115,14 +115,12 @@ preview.addEventListener("pause", () => {
     previewingClip = false;
 });
 
-const concatForm = document.querySelector("#concat-form");
-const firstVideo = document.querySelector("#concat-first");
-const secondVideo = document.querySelector("#concat-second");
+const concatVideos = document.querySelector("#concat-videos");
 const concatButton = document.querySelector("#concat-submit");
 
 function updateConcatButton() {
-    concatButton.disabled = firstVideo.files.length === 0 || secondVideo.files.length === 0;
+    concatButton.disabled = concatVideos.files.length < 2;
 }
 
-concatForm.addEventListener("change", updateConcatButton);
+concatVideos.addEventListener("change", updateConcatButton);
 updateConcatButton();

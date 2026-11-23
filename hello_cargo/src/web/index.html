@@ -54,10 +54,8 @@
 
         <form id="concat-form" action="/concat" method="post" enctype="multipart/form-data">
             <h2>Склейка видео</h2>
-            <label for="concat-first">Первое видео</label>
-            <input id="concat-first" name="first" type="file" accept=".mp4,video/mp4" required>
-            <label for="concat-second">Второе видео</label>
-            <input id="concat-second" name="second" type="file" accept=".mp4,video/mp4" required>
+            <label for="concat-videos">Выбери два или больше видео MP4</label>
+            <input id="concat-videos" name="videos" type="file" accept=".mp4,video/mp4" multiple required>
             <div class="actions">
                 <button id="concat-submit" type="submit" disabled>Склеить MP4</button>
             </div>
